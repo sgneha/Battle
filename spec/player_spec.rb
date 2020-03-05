@@ -2,6 +2,10 @@
 
 require 'player'
 describe Player do
-  it 'return players name' do
+  subject(:neha) { Player.new('Neha') }
+  describe '#name' do
+    it 'returns name' do
+      expect(neha.name).to eq 'Neha'
+    end
   end
 end

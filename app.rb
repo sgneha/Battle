@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require './lib/player.rb'
 require 'sinatra/base'
+
 class Battle < Sinatra::Base
   enable :sessions
+
   get '/anything' do
     'Hello World'
   end
@@ -14,19 +17,20 @@ class Battle < Sinatra::Base
     erb :index
   end
   post '/name' do
-    session[:Player1] = params[:Player1]
-    session[:Player2] = params[:Player2]
+    $player_1 = Player.new(params[:player_1_name])
+    $player_2 = Player.new(params[:player_2_name])
     redirect '/play'
   end
   get '/play' do
-    @player1 = session[:Player1]
-    @player2 = session[:Player2]
+    @player_1_name = $player_1.name
+    @player_2_name = $player_2.name
     erb :play
   end
   get '/attack' do
-    @player1 = session[:Player1]
-    @player2 = session[:Player2]
+    @player_1_name = $player_1.name
+    @player_2_name = $player_2.name
     erb :attack
   end
+
   run! if app_file == $PROGRAM_NAME
 end

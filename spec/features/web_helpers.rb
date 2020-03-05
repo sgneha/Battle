@@ -2,7 +2,7 @@
 
 def sign_in_play
   visit('/')
-  fill_in('Player1', with: 'neha')
-  fill_in('Player2', with: 'sophia')
+  fill_in('player_1_name', with: 'neha')
+  fill_in('player_2_name', with: 'sophia')
   click_button('Submit')
 end
