@@ -5,14 +5,6 @@ require 'sinatra/base'
 
 class Battle < Sinatra::Base
   enable :sessions
-
-  get '/anything' do
-    'Hello World'
-  end
-
-  get '/testing' do
-    'Testing infrastructure working!'
-  end
   get '/' do
     erb :index
   end
